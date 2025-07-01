@@ -1,0 +1,4 @@
+git --version
+node_modules/
+.env
+*.log
