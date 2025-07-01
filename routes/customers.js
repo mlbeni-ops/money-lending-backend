@@ -19,3 +19,11 @@ router.post("/", (req, res) => {
 
 module.exports = router;
 fetch("http://localhost:5000/api/customers")
+// DELETE a customer by ID
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  db.run("DELETE FROM customers WHERE id = ?", [id], function (err) {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json({ success: true, id });
+  });
+});
